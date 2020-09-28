@@ -17,7 +17,7 @@ BoxPacker is licensed under the `MIT license`_.
     You are reading the documentation for BoxPacker v1 which is no longer maintained except for the bare minimum work
     to allow it to function on newer PHP versions.
 
-    All users are recommended to upgrade to v2/v3 which removes the "always keep flat" limitation on items.
+    All users are recommended to upgrade to v3.
 
 .. _MIT license: https://github.com/dvdoug/BoxPacker/blob/master/license.txt
 
