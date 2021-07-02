@@ -169,7 +169,7 @@ class OrientatedItemFactory implements LoggerAwareInterface
                 new PackedItemList()
             );
             if (count(static::$emptyBoxCache) >= static::MAX_CACHE_SIZE) {
-                unset(static::$emptyBoxCache[array_rand(array_keys(self::$emptyBoxCache), 1)]);
+                unset(static::$emptyBoxCache[array_rand(self::$emptyBoxCache, 1)]);
             }
             static::$emptyBoxCache[$cacheKey] = $orientations;
         }
