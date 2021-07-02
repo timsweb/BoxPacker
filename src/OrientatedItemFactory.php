@@ -25,6 +25,8 @@ class OrientatedItemFactory implements LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
+    const MAX_CACHE_SIZE = 500;
+
     /** @var Box */
     protected $box;
 
@@ -166,6 +168,9 @@ class OrientatedItemFactory implements LoggerAwareInterface
                 0,
                 new PackedItemList()
             );
+            if (count(static::$emptyBoxCache) >= static::MAX_CACHE_SIZE) {
+                unset(static::$emptyBoxCache[array_rand(array_keys(self::$emptyBoxCache), 1)]);
+            }
             static::$emptyBoxCache[$cacheKey] = $orientations;
         }
 
@@ -257,12 +262,4 @@ class OrientatedItemFactory implements LoggerAwareInterface
         return $permutations;
     }
 
-    /**
-     * Clear the empty box cache. Useful is part of a long running 
-     * process to prevent memory leaks.
-     */
-    public static function clearEmptyBoxCache() : void
-    {
-        self::$emptyBoxCache = [];
-    }
 }
